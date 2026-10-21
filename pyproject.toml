@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "geosteer"
+version = "1.0.0"
+description = "Particle-filter geosteering: predict a horizontal well's stratigraphic depth (TVT) from its gamma-ray log"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "pandas>=2.0", "scipy>=1.10", "numba>=0.58"]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+analysis = ["matplotlib>=3.7"]
+
+[project.scripts]
+geosteer-predict = "geosteer.pipeline:predict_main"
+geosteer-evaluate = "geosteer.pipeline:evaluate_main"
+
+[tool.setuptools]
+packages = ["geosteer"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
